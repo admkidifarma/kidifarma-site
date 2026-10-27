@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Links Kidi Farma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Encarte da semana, comunidade de ofertas, pedidos pelo WhatsApp e endereço das duas farmácias em Monte Carlo/SC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+<style>
+/* Layout: coluna única de celular, cada link é um "banner" com cor e desenho próprios, como prateleiras empilhadas. */
+:root{
+  --bg:#EEF2EC; --fg:#13201B; --muted:#56635D; --line:#D5DDD6; --surface:#FFFFFF;
+  --encarte:#FFD23F; --encarte-ink:#2B1B00; --tag:#D7261E;
+  --com:#0E5A3D; --com-ink:#F0FAF4; --bubble:#CDEFDB; --bubble-2:#8FD6AE;
+  --fralda:#BFE2F4; --fralda-ink:#0E3550;
+  --cabelo:#F4D0E1; --cabelo-ink:#4B1531;
+  --conv:#1E2B4E; --conv-ink:#EEF1FA; --conv-card:#3B4C7E;
+  --road:#BFC8C1; --pin:#0E5A3D; --pin-2:#D7261E;
+  --chip:#13201B; --chip-ink:#FFFFFF;
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1411; --fg:#E7EFEA; --muted:#9DAEA6; --line:#25312C; --surface:#161F1B;
+  --com:#0F4D35; --conv:#1A2544; --road:#3A4741; --pin:#4CC79D;
+  --chip:#E7EFEA; --chip-ink:#0D1411; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1411; --fg:#E7EFEA; --muted:#9DAEA6; --line:#25312C; --surface:#161F1B;
+  --com:#0F4D35; --conv:#1A2544; --road:#3A4741; --pin:#4CC79D;
+  --chip:#E7EFEA; --chip-ink:#0D1411; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.page{max-width:460px;margin:0 auto;padding-block:20px 36px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:14px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tag);outline-offset:3px;border-radius:6px}
+
+/* topo */
+.head{display:flex;align-items:center;gap:14px;padding:6px 2px 8px}
+.logo{flex:none;width:68px;height:68px;border-radius:50%;background:var(--com);color:var(--com-ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.head h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:1.42rem;line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+.head p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.hours{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:.8rem;font-weight:600;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.hours::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pin)}
+
+/* banners */
+.card{position:relative;overflow:hidden;border-radius:22px;display:block;text-decoration:none;min-height:148px;padding:18px 18px 16px;isolation:isolate;transition:transform .15s ease}
+a.card:active,a.card:hover{transform:translateY(-2px)}
+.card h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:1.65rem;line-height:.98;letter-spacing:-.025em;max-width:11ch;text-wrap:balance}
+.card p{margin:8px 0 0;font-size:.9rem;max-width:min(25ch,60%);line-height:1.35}
+.card h2{position:relative}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--chip);color:var(--chip-ink);font-weight:700;font-size:.86rem;padding:8px 14px;border-radius:999px;text-decoration:none}
+.chip::after{content:"→";font-weight:700}
+.chip.soon,.card.soon .chip{background:transparent;color:inherit;border:1.5px dashed currentColor;opacity:.75}
+.chip.soon::after,.card.soon .chip::after{content:""}
+.art{position:absolute;z-index:-1;pointer-events:none}
+
+/* encarte */
+.encarte{background:var(--encarte);color:var(--encarte-ink);min-height:172px;border:2px dashed rgba(43,27,0,.35);background-clip:padding-box}
+.encarte .eyebrow{font-family:var(--f-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;opacity:.75}
+.encarte .chip{--chip:#2B1B00;--chip-ink:#FFD23F;background:#2B1B00;color:#FFD23F}
+.tag{right:-8px;top:22px;width:150px;height:96px;background:var(--tag);color:#FFF6D6;border-radius:12px 0 0 12px;transform:rotate(-8deg);display:flex;flex-direction:column;justify-content:center;padding-left:26px;font-family:var(--f-display);font-weight:800;line-height:.9}
+.tag::before{content:"";position:absolute;left:10px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--encarte)}
+.tag small{font-size:.8rem;font-weight:700;letter-spacing:.06em}
+.tag b{font-size:2.9rem;letter-spacing:-.04em}
+.tag b sup{font-size:.4em;vertical-align:top;position:relative;top:.35em}
+.burst{right:118px;bottom:-26px;width:84px;height:84px;background:#FFF3B8;border-radius:50%;opacity:.7}
+
+/* comunidade */
+.com{background:var(--com);color:var(--com-ink)}
+.com .chip{background:#F0FAF4;color:#0E5A3D}
+.bubbles{right:14px;top:16px;display:flex;flex-direction:column;gap:7px;align-items:flex-end;width:118px}
+.bubbles i{display:block;height:24px;border-radius:14px 14px 4px 14px;background:var(--bubble)}
+.bubbles i:nth-child(1){width:96px}
+.bubbles i:nth-child(2){width:70px;background:var(--bubble-2)}
+.bubbles i:nth-child(3){width:108px}
+.bubbles i:nth-child(4){width:52px;background:var(--bubble-2)}
+.com .fine{font-size:.78rem;opacity:.8;margin-top:6px;max-width:min(30ch,64%)}
+
+/* pedido */
+.pedido{background:var(--surface);color:var(--fg);border:1px solid var(--line);min-height:0}
+.pedido h2{max-width:13ch}
+.pedido .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pedido .row .chip{margin-top:0}
+.chip.alt{background:transparent;color:var(--fg);border:1.5px solid var(--fg)}
+.capsule{right:-18px;top:18px;width:120px;height:46px;border-radius:999px;transform:rotate(-28deg);background:linear-gradient(90deg,var(--tag) 0 50%,var(--encarte) 50% 100%);opacity:.9}
+.capsule.two{right:44px;top:74px;width:74px;height:28px;transform:rotate(18deg);background:linear-gradient(90deg,var(--pin) 0 50%,var(--bubble) 50% 100%);opacity:.8}
+.pedido .note{font-size:.78rem;color:var(--muted);margin-top:10px;max-width:34ch}
+.pedido > p:first-of-type{max-width:min(28ch,66%)}
+
+/* dias */
+.dias{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dia{border-radius:20px;padding:14px 14px 16px;min-height:132px;text-decoration:none;position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column}
+.dia .d{font-family:var(--f-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.dia strong{display:block;font-family:var(--f-display);font-weight:800;font-size:1.3rem;line-height:.98;letter-spacing:-.02em;margin-top:4px}
+.dia span.s{font-size:.8rem;margin-top:auto;padding-top:8px;line-height:1.3}
+.fralda{background:var(--fralda);color:var(--fralda-ink)}
+.cabelo{background:var(--cabelo);color:var(--cabelo-ink)}
+.dots{right:-14px;top:-14px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.75) 0 8px,transparent 9px),radial-gradient(circle at 70% 60%,rgba(255,255,255,.6) 0 6px,transparent 7px),rgba(255,255,255,.35)}
+.wave{right:-10px;top:8px;width:70px;height:50px;border-radius:50%;border:6px solid rgba(255,255,255,.55);border-left-color:transparent;border-bottom-color:transparent;transform:rotate(20deg)}
+
+/* convênio */
+.conv{background:var(--conv);color:var(--conv-ink)}
+.conv .chip{background:var(--conv-ink);color:var(--conv)}
+.cards{right:-20px;top:22px;width:130px;height:96px}
+.cards i{position:absolute;width:112px;height:70px;border-radius:10px;background:var(--conv-card);border:1px solid rgba(255,255,255,.18)}
+.cards i:nth-child(1){right:22px;top:0;transform:rotate(-10deg)}
+.cards i:nth-child(2){right:4px;top:18px;transform:rotate(6deg);background:#5468A3}
+.cards i:nth-child(2)::before{content:"";position:absolute;left:12px;top:14px;width:20px;height:15px;border-radius:3px;background:#E7C66B}
+.cards i:nth-child(2)::after{content:"";position:absolute;left:12px;bottom:12px;width:62px;height:6px;border-radius:3px;background:rgba(255,255,255,.55)}
+
+/* lojas */
+.lojas{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px}
+.lojas h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:1.65rem;line-height:.98;letter-spacing:-.025em}
+.lojas .sub{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+.road{margin:16px 0 6px;overflow-x:auto}
+.road svg{display:block;width:100%;height:auto;max-width:100%}
+.road text{font-family:var(--f-body);fill:var(--fg)}
+.road .lbl{font-size:12px;font-weight:700}
+.road .num{font-size:11px;fill:var(--muted)}
+.road .dist{font-size:12px;font-weight:700;fill:var(--tag)}
+.store{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.store:first-of-type{margin-top:6px}
+.store b{font-family:var(--f-display);font-weight:800;font-size:1.05rem}
+.store .addr{grid-column:1;font-size:.84rem;color:var(--muted)}
+.store .acts{grid-column:2;grid-row:1 / span 2;display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.mini{font-size:.8rem;font-weight:700;text-decoration:none;text-align:center;border-radius:999px;padding:6px 12px;border:1.5px solid var(--fg);color:var(--fg);white-space:nowrap}
+.mini.fill{background:var(--chip);color:var(--chip-ink);border-color:var(--chip)}
+.mini.soon{border-style:dashed;opacity:.6}
+
+/* rodapé */
+.foot{font-size:.74rem;color:var(--muted);line-height:1.5;padding:6px 4px 0}
+.foot p{margin:0 0 4px}
+.foot b{color:var(--fg);font-weight:600}
+
+@media (prefers-reduced-motion: reduce){.card{transition:none}a.card:hover,a.card:active{transform:none}}
+@media (max-width:360px){.card h2,.lojas h2{font-size:1.45rem}.tag{width:124px}.tag b{font-size:2.4rem}}
+</style>
+
+</head>
+<body>
+<main class="page">
+
+  <header class="head">
+    <div class="logo" id="logo" aria-hidden="true">KF</div>
+    <div>
+      <h1>Kidi Farma &amp; Líder Farma</h1>
+      <p>Duas farmácias na SC-452, Monte Carlo/SC</p>
+      <span class="hours" id="hours" hidden></span>
+    </div>
+  </header>
+
+  <a class="card encarte" data-link="encarte" href="#" target="_blank" rel="noopener">
+    <div class="eyebrow">Ofertas da semana</div>
+    <h2>Encarte de promoções</h2>
+    <p>Preço especial pagando na hora, no Pix, dinheiro ou cartão.</p>
+    <span class="chip">Ver o encarte</span>
+    <span class="art burst"></span>
+    <span class="art tag"><small>OFERTA</small><b>%</b></span>
+  </a>
+
+  <a class="card com" data-link="comunidade" href="#" target="_blank" rel="noopener">
+    <h2>Grupo de ofertas no WhatsApp</h2>
+    <p>Receba as promoções primeiro, direto no seu celular.</p>
+    <p class="fine">Só a farmácia posta. Seu número fica escondido e você sai quando quiser.</p>
+    <span class="chip">Entrar no grupo</span>
+    <span class="art bubbles"><i></i><i></i><i></i><i></i></span>
+  </a>
+
+  <section class="card pedido" aria-labelledby="t-pedido">
+    <h2 id="t-pedido">Peça pelo WhatsApp</h2>
+    <p>Tire dúvidas, faça seu pedido ou mande a foto da receita para o farmacêutico conferir.</p>
+    <div class="row">
+      <a class="chip" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram e quero fazer um pedido." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="chip alt" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram e quero enviar uma receita." href="#" target="_blank" rel="noopener">Enviar receita</a>
+    </div>
+    <p class="note" id="entrega-note" hidden></p>
+    <span class="art capsule"></span>
+    <span class="art capsule two"></span>
+  </section>
+
+  <div class="dias" id="dias">
+    <a class="dia fralda" data-link="comunidade" href="#" target="_blank" rel="noopener">
+      <span class="d">Toda quarta</span>
+      <strong>Quarta da Fralda</strong>
+      <span class="s">Fralda, lenço e higiene do bebê com preço de quarta.</span>
+      <span class="art dots"></span>
+    </a>
+    <a class="dia cabelo" data-link="comunidade" href="#" target="_blank" rel="noopener">
+      <span class="d">Toda quinta</span>
+      <strong>Quinta do Cabelo</strong>
+      <span class="s">Shampoo, condicionador e tintura em oferta.</span>
+      <span class="art wave"></span>
+    </a>
+  </div>
+
+  <a class="card conv" data-link="whatsapp" data-msg="Olá! Vim pelo Instagram e quero saber se minha empresa tem convênio com a farmácia." href="#" target="_blank" rel="noopener">
+    <h2>Convênio com a sua empresa</h2>
+    <p>Trabalhamos com convênios das empresas da região. Pergunte se a sua está na lista.</p>
+    <span class="chip">Consultar convênio</span>
+    <span class="art cards"><i></i><i></i></span>
+  </a>
+
+  <section class="lojas" aria-labelledby="t-lojas">
+    <h2 id="t-lojas">Nossas lojas</h2>
+    <p class="sub">As duas ficam na mesma rodovia, uma pertinho da outra.</p>
+    <div class="road" aria-hidden="true">
+      <svg viewBox="0 0 400 96" role="img">
+        <rect x="0" y="52" width="400" height="16" rx="8" fill="var(--road)"/>
+        <line x1="12" y1="60" x2="388" y2="60" stroke="var(--surface)" stroke-width="2" stroke-dasharray="10 9"/>
+        <text x="200" y="88" text-anchor="middle" class="num">Rodovia SC-452 (Carlos Pisani)</text>
+        <line x1="120" y1="34" x2="280" y2="34" stroke="var(--tag)" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="200" y="28" text-anchor="middle" class="dist">87 m</text>
+        <circle cx="120" cy="44" r="13" fill="var(--pin)"/>
+        <circle cx="120" cy="44" r="5" fill="var(--surface)"/>
+        <path d="M110 51 L120 64 L130 51 Z" fill="var(--pin)"/>
+        <circle cx="280" cy="44" r="13" fill="var(--pin-2)"/>
+        <circle cx="280" cy="44" r="5" fill="var(--surface)"/>
+        <path d="M270 51 L280 64 L290 51 Z" fill="var(--pin-2)"/>
+        <text x="72" y="20" text-anchor="middle" class="lbl">Líder Farma</text>
+        <text x="72" y="34" text-anchor="middle" class="num">nº 1643</text>
+        <text x="332" y="20" text-anchor="middle" class="lbl">Kidi Farma</text>
+        <text x="332" y="34" text-anchor="middle" class="num">nº 1756</text>
+      </svg>
+    </div>
+    <div class="store">
+      <b>Kidi Farma</b>
+      <span class="addr">Rod. SC-452, nº 1756, Monte Carlo/SC</span>
+      <div class="acts">
+        <a class="mini fill" data-link="mapaKidi" href="#" target="_blank" rel="noopener">Como chegar</a>
+        <a class="mini" data-link="avaliarKidi" href="#" target="_blank" rel="noopener">Avaliar</a>
+      </div>
+    </div>
+    <div class="store">
+      <b>Líder Farma</b>
+      <span class="addr">Rod. SC-452, nº 1643, Monte Carlo/SC</span>
+      <div class="acts">
+        <a class="mini fill" data-link="mapaLider" href="#" target="_blank" rel="noopener">Como chegar</a>
+        <a class="mini" data-link="avaliarLider" href="#" target="_blank" rel="noopener">Avaliar</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot" id="foot"></footer>
+</main>
+
+<script>
+/* ================================================================
+   CONFIGURAÇÃO: só mexa aqui.
+   Campo vazio ("") deixa o botão como "Em breve" ou esconde a linha.
+   ================================================================ */
+var CONFIG = {
+  logo: "",                 // caminho da imagem do logo, ex.: "logo.png"
+  horario: "",              // ex.: "Seg a sáb, 8h às 20h"
+  whatsapp: "",             // número de pedidos com DDD, só dígitos, ex.: "49999999999"
+  comunidade: "",           // link de convite da comunidade/grupo de ofertas
+  encarte: "",              // link do encarte da semana (página ou imagem)
+  entrega: "",              // ex.: "Tele-entrega em Monte Carlo. A entrega sai depois do pagamento pelo link."
+  diasTematicos: true,      // false esconde Quarta da Fralda e Quinta do Cabelo
+  mapaKidi:  "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rodovia SC-452, 1756, Monte Carlo - SC, 89618-000"),
+  mapaLider: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rodovia SC-452, 1643, Monte Carlo - SC, 89618-000"),
+  avaliarKidi: "",          // link "escrever avaliação" do Perfil da Empresa no Google
+  avaliarLider: "",
+  responsavel: "",          // ex.: "Farmacêutico responsável: Nome Sobrenome, CRF/SC 00000"
+  empresa: ""               // ex.: "Kidifarma Comércio de Medicamentos Ltda · CNPJ 00.000.000/0001-00 · AFE 0.00000-0"
+};
+
+(function(){
+  function waLink(msg){
+    var n = String(CONFIG.whatsapp||"").replace(/\D/g,"");
+    if(!n){return "";}
+    if(n.indexOf("55")!==0){n="55"+n;}
+    return "https://wa.me/"+n+(msg?"?text="+encodeURIComponent(msg):"");
+  }
+  function soon(el){
+    el.removeAttribute("href"); el.setAttribute("aria-disabled","true"); el.classList.add("soon");
+    var own = el.classList.contains("chip")||el.classList.contains("mini");
+    var chip = own ? null : el.querySelector(".chip");
+    if(chip){ chip.textContent = "Em breve"; }
+    el.addEventListener("click",function(e){e.preventDefault();});
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-link]"),function(el){
+    var key = el.dataset.link;
+    var url = key==="whatsapp" ? waLink(el.dataset.msg) : CONFIG[key];
+    if(url){ el.href = url; } else { soon(el); }
+  });
+
+  if(CONFIG.logo){ var lg=document.getElementById("logo"); lg.textContent=""; var im=new Image(); im.src=CONFIG.logo; im.alt=""; lg.appendChild(im); }
+  if(CONFIG.horario){ var h=document.getElementById("hours"); h.textContent=CONFIG.horario; h.hidden=false; }
+  if(CONFIG.entrega){ var e=document.getElementById("entrega-note"); e.textContent=CONFIG.entrega; e.hidden=false; }
+  if(!CONFIG.diasTematicos){ document.getElementById("dias").hidden=true; }
+
+  var f=document.getElementById("foot"), parts=[];
+  if(CONFIG.responsavel){ parts.push("<p><b>"+CONFIG.responsavel+"</b></p>"); }
+  if(CONFIG.empresa){ parts.push("<p>"+CONFIG.empresa+"</p>"); }
+  parts.push("<p>Medicamento de receita só com prescrição e avaliação do farmacêutico. Controlado somente na loja, com a receita original.</p>");
+  f.innerHTML = parts.join("");
+})();
+</script>
+
+</body>
+</html>
